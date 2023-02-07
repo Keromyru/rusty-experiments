@@ -1,0 +1,40 @@
+// To compile rust code:
+rustc ./main.rs OR rustc main.rs
+
+// to run rust file
+./main  OR .\main.exe
+
+// this outputs a binary executable! :)
+// .exe or just the compiled file will be there alongside a .pdb of debuff information
+// these are single files to create a new project:
+
+cargo new <projectName>
+//this also created a .toml file as well as a /src directory
+// the .toml is a config for cargo; also crates refer to packages! lol
+
+// to build a cargo project
+cargo build
+// this creates a target folder with a bug folder 
+// (the default build is a bug build)
+// to run the debug project
+./target/debug/hello_cargo or .\target\debug\hello_cargo.exe
+
+cargo run //will build and run the project for us! no more dual steps
+// if source code does not change it just runs the current executable
+//otherwise we would see the coSmplier working
+
+// neat tool is 
+cargo check
+// this ensures the project will compile and is much faster than build
+// essentially check it will still run then build once ready to use the executable
+
+cargo build --release // does some optimizations and will put the executable in target/release
+// this does slow down the compile time btw
+
+//note that cargo .toml has semantic verisoning so a verision 0.8.5 will take any version\
+// higher that 0.8.5 but below 0.9.0
+// also note to update anything
+cargo update
+// can be used to increase the version, like to 0.8.6 but NOT to 0.9.0 
+// explicit updates, things with potentially breaking changes
+// need to be updated manually in the .toml file 
