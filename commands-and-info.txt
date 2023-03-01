@@ -1,3 +1,6 @@
+// install rust
+
+
 // To compile rust code:
 rustc ./main.rs OR rustc main.rs
 
