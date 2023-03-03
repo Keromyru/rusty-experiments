@@ -106,6 +106,45 @@ fn add_fancy_hat() {}
 fn remove_fancy_hat() {}
 fn move_player(num_spaces: u8) {}
 
+//aside from match expressions there is also if let expressions; this is less verbose than match
+// and lets specific matching for a single pattern and then execute code based on that pattern
+// example of a config max and matching against that to execute some code
+let config_max = Some(3u8);
+match config_max {
+  // if the value of Some, we print out the value in Some variant by binding the value to the variable max
+  // And because we don't want to do anything with None we just add the _ => () to tell the compiler
+  // do nothing if the value is None
+    Some(max) => println!("The maximum is configured to be {}", max),
+    _ => (),
+}// HOWEVER this is a lot of code for just one expression to match 
+// There is a better way
+let config_max = Some(3u8);
+if let Some(max) = config_max {
+    println!("The maximum is configured to be {}", max);
+}
+/*
+e can include an else with an if let. The block of code that goes with the else is the same as the block of 
+code that would go with the _ case in the match expression that is equivalent to the if let and else. 
+Recall the Coin enum definition in Listing 6-4, where the Quarter variant also held a UsState value. 
+If we wanted to count all non-quarter coins we see while also announcing the state of the quarters, 
+we could do that with a match expression, like this:
+*/
+let mut count = 0;
+match coin {
+    Coin::Quarter(state) => println!("State quarter from {:?}!", state),
+    _ => count += 1,
+}
+// OR with if let and else
+let mut count = 0;
+if let Coin::Quarter(state) = coin {
+    println!("State quarter from {:?}!", state);
+} else {
+    count += 1;
+}
+// It seems if there is 3+ variations or states the match expression is better
+// which makes sense it will enforce we handle all states and not just one or two
+
+
 fn main() {
     println!("Hello, world!");
 }
