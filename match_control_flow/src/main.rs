@@ -144,7 +144,6 @@ if let Coin::Quarter(state) = coin {
 // It seems if there is 3+ variations or states the match expression is better
 // which makes sense it will enforce we handle all states and not just one or two
 
-
 fn main() {
     println!("Hello, world!");
 }
